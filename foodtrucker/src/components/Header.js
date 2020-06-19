@@ -9,6 +9,11 @@ const StyledHeader = styled.header`
     justify-content: space-around;
     align-items: center;
     height: 20vh;
+    nav {
+        display: flex;
+        justify-content: space-around;
+        width: 30%;
+    }
 `
 
 function Header() {
@@ -20,8 +25,8 @@ function Header() {
                 <input name="search"></input>
             </form>
             <nav>
-                <Link>Home</Link>
-                <Link>Login</Link>
+                <Link to="/">Home</Link>
+                <Link to="/login">Login</Link>
                 <Link>Sign-up</Link>
             </nav>
         </StyledHeader>
