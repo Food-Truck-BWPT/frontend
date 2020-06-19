@@ -1,12 +1,10 @@
 import React, { useState, useEffect } from "react";
-import { useHistory } from "react-router-dom";
 import styled from "styled-components";
-import { axiosWithAuth } from "../utils/axiosWithAuth";
 import * as Yup from "yup";
 
 // STYLING ************
 const LoginForm = styled.form`
-  border: 1px solid white;
+  /* border: 1px solid white; */
   display: flex;
   align-items: center;
   justify-content: space-around;
@@ -32,43 +30,28 @@ const LoginForm = styled.form`
 const Login = () => {
   const formSchema = Yup.object().shape({
     username: Yup.string().required("Must include a valid username."),
-    email: Yup.string().required("email is required."),
     password: Yup.string()
       .min(4, "Passwords must be at least 4 characters long.")
       .required("Password is required."),
   });
 
-  const history = useHistory();
   const [login, setLogin] = useState({
     username: "",
-    email: "",
     password: "",
-    // isVendor: false,
   });
 
   const [errors, setErrors] = useState({
     username: "",
-    email: "",
     password: "",
   });
   const [buttonDisabled, setButtonDisabled] = useState(true);
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    // axiosWithAuth()
-    //   .post(`https://foodtruck.herokuapp.com/api/auth/login`, login)
-    //   .then((res) => {
-    //     console.log(res.data);
-    //     localStorage.setItem("token", res.data.token);
-    //     history.push("/profile");
-    //   })
-    //   .catch((err) => {
-    //     console.log("error", err);
-    //   });
   };
 
   const handleChange = (e) => {
-    // e.persist();
+    e.persist();
     Yup.reach(formSchema, e.target.name)
       .validate(e.target.value)
       .then((valid) => {
@@ -87,7 +70,6 @@ const Login = () => {
     setLogin({
       ...login,
       [e.target.name]: e.target.value,
-      isVendor: !login.isVendor,
     });
   };
 
@@ -115,19 +97,6 @@ const Login = () => {
           <p className="error">{errors.username}</p>
         ) : null}
         <label>
-          Email:
-          <input
-            type="text"
-            name="email"
-            placeholder="Email"
-            value={login.email}
-            onChange={handleChange}
-          />
-        </label>
-        {errors.email.length > 0 ? (
-          <p className="error">{errors.email}</p>
-        ) : null}
-        <label>
           Password:
           <input
             type="password"
@@ -140,15 +109,6 @@ const Login = () => {
         {errors.password.length > 4 ? (
           <p className="error">{errors.password}</p>
         ) : null}
-        {/* <label>
-          Vendor?:
-          <input
-            type="checkbox"
-            name="isVendor"
-            value={login.isVendor}
-            onChange={handleChange}
-          />
-        </label> */}
         <button disabled={buttonDisabled}>Submit</button>
       </LoginForm>
     </div>
