@@ -5,7 +5,6 @@ import {Link} from "react-router-dom"
 const StyledHeader = styled.header`
 
     width: 100%;
-    background-color: #323643;
     display: flex;
     justify-content: space-around;
     align-items: center;
