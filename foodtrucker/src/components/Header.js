@@ -27,7 +27,7 @@ function Header() {
             <nav>
                 <Link to="/">Home</Link>
                 <Link to="/login">Login</Link>
-                <Link>Sign-up</Link>
+                <Link to="/register">Sign-up</Link>
             </nav>
         </StyledHeader>
     )
