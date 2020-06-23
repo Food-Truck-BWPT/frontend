@@ -7,7 +7,8 @@ const axiosWithAuth = () => {
         baseURL: 'https://food-truckr-app.herokuapp.com/api',
         headers: {
             Authorization: `${token}`,
-        }
+        },
+        credentials: "include"
     })
 }
 
