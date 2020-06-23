@@ -5,3 +5,11 @@
   padding: 0;
   color: #ff570c;
 }
+
+html {
+  font-size: 62.5%;
+}
+
+a, p, input, label {
+  font-size: 2rem;
+}
