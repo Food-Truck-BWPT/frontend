@@ -3,8 +3,6 @@ import Login from "./login/loginForm"
 import Signup from "./login/signupForm"
 import {Route} from "react-router-dom"
 
-
-
 function Content() {
     return (
         <div className="content">

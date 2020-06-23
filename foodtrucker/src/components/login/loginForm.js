@@ -3,6 +3,7 @@ import styled from "styled-components";
 import * as Yup from "yup";
 
 // STYLING ************
+
 const LoginForm = styled.form`
   /* border: 1px solid white; */
   display: flex;
