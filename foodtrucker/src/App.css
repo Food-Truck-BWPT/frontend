@@ -13,3 +13,9 @@ html {
 a, p, input, label {
   font-size: 2rem;
 }
+
+.hero {
+  background-image: url("./assets/map.jpg");
+  width: 100%;
+  height: 80vh;
+}
