@@ -6,7 +6,6 @@ import {useHistory} from "react-router-dom"
 
 // STYLING ************
 const SignupSection = styled.section`
-  /* border: 1px solid black; */
   width: 100%;
   display: flex;
   align-items: center;
@@ -17,12 +16,9 @@ const SignupSection = styled.section`
     font-size: 3rem;
     margin: 1%;
   }
-
 `;
 
 const SignupForm = styled.form`
-  /* border: 1px solid white; */
-
   label {
     font-size: 2.5rem;
   }
