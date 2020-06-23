@@ -52,6 +52,7 @@ const Signup = () => {
     password: "",
     isVendor: "",
   });
+  
   const [buttonDisabled, setButtonDisabled] = useState(true);
 
   const handleSubmit = (event) => {
