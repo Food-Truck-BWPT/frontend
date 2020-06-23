@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 import * as Yup from "yup";
+import axiosWithAuth from "../../utils/axiosWithAuth";
+import {useHistory} from "react-router-dom"
 
 // STYLING ************
 const SignupForm = styled.form`
@@ -8,6 +10,7 @@ const SignupForm = styled.form`
   display: flex;
   align-items: center;
   justify-content: space-around;
+  flex-flow: column;
 
   label {
     font-size: 2.5rem;
@@ -26,8 +29,8 @@ const SignupForm = styled.form`
 `;
 
 // CODE *********
-
 const Signup = () => {
+  const {push} =useHistory()
   const [signup, setSignup] = useState({
     username: "",
     email: "",
@@ -43,15 +46,17 @@ const Signup = () => {
     isVendor: "",
   });
 
+  const [buttonDisabled, setButtonDisabled] = useState(true);
+
   const formSchema = Yup.object().shape({
     username: Yup.string().required("Must include a valid username."),
-    email: Yup.string().required("email is required.")
-    .min(10, "Emails must be at least 10 characters long.")
-    ,
+    email: Yup.string()
+      .required("email is required.")
+      .min(10, "Emails must be at least 10 characters long."),
     password: Yup.string()
       .min(4, "Passwords must be at least 4 characters long.")
       .required("Password is required."),
-    isVendor: Yup.boolean()
+    isVendor: Yup.boolean().notRequired(),
   });
 
   useEffect(() => {
@@ -59,9 +64,6 @@ const Signup = () => {
       setButtonDisabled(!valid);
     });
   }, [signup]);
-  
-  
-  const [buttonDisabled, setButtonDisabled] = useState(true);
 
   // method handlers
   const handleCheck = (e) => {
@@ -87,15 +89,23 @@ const Signup = () => {
           [e.target.name]: err.errors[0],
         });
       });
-
     setSignup({
-      ...Signup,
-      [e.target.name]: e.target.value,
+      ...signup,
+      [e.target.name]: e.target.value
     });
   };
 
   const handleSubmit = (event) => {
     event.preventDefault();
+    axiosWithAuth()
+      .post("/auth/register", signup)
+      .then((res) => {
+        console.log(res.data);
+        push("/login")
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   };
 
   return (
