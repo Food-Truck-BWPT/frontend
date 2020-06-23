@@ -1,6 +1,6 @@
 import React from "react"
-import Login from "./Login"
-import Signup from "./Signup"
+import Login from "./login/loginForm"
+import Signup from "./login/signupForm"
 import {Route} from "react-router-dom"
 
 
