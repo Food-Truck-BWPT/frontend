@@ -7,7 +7,7 @@ function Profile() {
     return (
         <section>
             <VendorNav />
-            <Route path="/newtruck">
+            <Route exact path="/profile/newtruck">
                 <NewFoodTruck />
             </Route>
         </section>

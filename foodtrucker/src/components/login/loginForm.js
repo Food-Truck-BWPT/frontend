@@ -2,11 +2,10 @@ import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 import * as Yup from "yup";
 import axiosWithAuth from "../../utils/axiosWithAuth";
+import {useHistory} from "react-router-dom"
 
 // STYLING ************
-
 const LoginSection = styled.section`
-  /* border: 1px solid black; */
   width: 100%;
   display: flex;
   align-items: center;
@@ -17,9 +16,7 @@ const LoginSection = styled.section`
     font-size: 3rem;
     margin: 1%;
   }
-
 `;
-
 
 const LoginForm = styled.form`
   /* border: 1px solid black; */
@@ -41,8 +38,8 @@ const LoginForm = styled.form`
 `;
 
 // CODE *********
-
 const Login = () => {
+  const {push} = useHistory()
   const [login, setLogin] = useState({
     username: "",
     password: "",
@@ -100,6 +97,7 @@ const Login = () => {
       .then((res) => {
         console.log(res);
         // localStorage.setItem("token", res.config.headers.Authorization);
+        push("/profile")
       })
       .catch((err) => {
         console.log(err);

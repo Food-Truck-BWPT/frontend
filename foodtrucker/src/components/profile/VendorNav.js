@@ -9,10 +9,10 @@ const VendorNavi = styled.nav`
     justify-content: space-around;
     a {
         color: #323643;
+        background-color: #f7f7f7;
         font-weight: bold;
         font-size: 1.5rem;
         text-decoration: none;
-        text-shadow: 0px 0px 5px white;
         border-radius: 1rem;
         transition: .5s;
         padding: .5rem;
@@ -29,7 +29,7 @@ function VendorNav() {
     return (
         <VendorNavi>
             {/* create new truck */}
-            <Link to="/newtruck">New Truck</Link>
+            <Link to="/profile/newtruck">New Truck</Link>
             {/* edit and delete trucks */}
             <Link>My Trucks</Link> 
             <Link>Favorite Trucks</Link>
