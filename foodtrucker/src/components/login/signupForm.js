@@ -28,6 +28,21 @@ const SignupForm = styled.form`
 // CODE *********
 
 const Signup = () => {
+  const [signup, setSignup] = useState({
+    username: "",
+    email: "",
+    password: "",
+    isVendor: false,
+  });
+
+  // Form Validation
+  const [errors, setErrors] = useState({
+    username: "",
+    email: "",
+    password: "",
+    isVendor: "",
+  });
+
   const formSchema = Yup.object().shape({
     username: Yup.string().required("Must include a valid username."),
     email: Yup.string().required("email is required.")
@@ -39,26 +54,16 @@ const Signup = () => {
     isVendor: Yup.boolean()
   });
 
-  const [signup, setSignup] = useState({
-    username: "",
-    email: "",
-    password: "",
-    isVendor: false,
-  });
-
-  const [errors, setErrors] = useState({
-    username: "",
-    email: "",
-    password: "",
-    isVendor: "",
-  });
+  useEffect(() => {
+    formSchema.isValid(signup).then((valid) => {
+      setButtonDisabled(!valid);
+    });
+  }, [signup]);
+  
   
   const [buttonDisabled, setButtonDisabled] = useState(true);
 
-  const handleSubmit = (event) => {
-    event.preventDefault();
-  };
-
+  // method handlers
   const handleCheck = (e) => {
     setSignup({
       ...signup,
@@ -89,11 +94,9 @@ const Signup = () => {
     });
   };
 
-  useEffect(() => {
-    formSchema.isValid(signup).then((valid) => {
-      setButtonDisabled(!valid);
-    });
-  }, [signup]);
+  const handleSubmit = (event) => {
+    event.preventDefault();
+  };
 
   return (
     <div>
