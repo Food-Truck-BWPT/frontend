@@ -5,22 +5,34 @@ import axiosWithAuth from "../../utils/axiosWithAuth";
 import {useHistory} from "react-router-dom"
 
 // STYLING ************
-const SignupForm = styled.form`
-  /* border: 1px solid white; */
+const SignupSection = styled.section`
+  /* border: 1px solid black; */
+  width: 100%;
   display: flex;
   align-items: center;
-  justify-content: space-around;
-  flex-flow: column;
+  justify-content: center;
+  flex-direction: column;
+  height: 70vh;
+  h2{
+    font-size: 3rem;
+    margin: 1%;
+  }
+
+`;
+
+const SignupForm = styled.form`
+  /* border: 1px solid white; */
 
   label {
     font-size: 2.5rem;
   }
   input {
     background-color: white;
-    font-size: 2rem;
+    margin: 1rem;
   }
   button {
     font-size: 2rem;
+    padding: .5rem;
     :disabled {
       background: #c0c0c0;
       color: #e8e8e8;
@@ -109,7 +121,7 @@ const Signup = () => {
   };
 
   return (
-    <div>
+    <SignupSection>
       <h2>User Signup</h2>
       <SignupForm onSubmit={handleSubmit}>
         <label>
@@ -162,7 +174,7 @@ const Signup = () => {
         </label>
         <button disabled={buttonDisabled}>Submit</button>
       </SignupForm>
-    </div>
+    </SignupSection>
   );
 };
 
