@@ -1,15 +1,19 @@
 import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 import * as Yup from "yup";
+import axiosWithAuth from "../../utils/axiosWithAuth";
 
 // STYLING ************
-
+const LoginSection = styled.section`
+  
+`
 
 const LoginForm = styled.form`
   /* border: 1px solid white; */
   display: flex;
   align-items: center;
   justify-content: space-around;
+  flex-flow: column;
 
   label {
     font-size: 2.5rem;
@@ -52,13 +56,9 @@ const Login = () => {
     formSchema.isValid(login).then((valid) => {
       setButtonDisabled(!valid);
     });
-  }, [login]);
+  }, [formSchema, login]);
   
   const [buttonDisabled, setButtonDisabled] = useState(true);
-
-  const handleSubmit = (event) => {
-    event.preventDefault();
-  };
 
 
   // method handlers
@@ -86,11 +86,24 @@ const Login = () => {
   };
 
 
+  const submitLogin = (e) => {
+    e.preventDefault()
+    axiosWithAuth()
+    .post("auth/login", login)
+    .then(res => {
+      console.log(res)
+      // localStorage.setItem("token", res.config.headers.Authorization);
+    })
+    .catch(err => {
+      console.log(err)
+    })
+  }
+
 
   return (
     <div>
       <h2>User Login</h2>
-      <LoginForm onSubmit={handleSubmit}>
+      <LoginForm onSubmit={submitLogin}>
         <label>
           UserName:
           <input
