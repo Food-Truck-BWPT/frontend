@@ -30,6 +30,17 @@ const LoginForm = styled.form`
 // CODE *********
 
 const Login = () => {
+  const [login, setLogin] = useState({
+    username: "",
+    password: "",
+  });
+
+  //Form Validation
+  const [errors, setErrors] = useState({
+    username: "",
+    password: "",
+  });
+
   const formSchema = Yup.object().shape({
     username: Yup.string().required("Must include a valid username."),
     password: Yup.string()
@@ -37,21 +48,20 @@ const Login = () => {
       .required("Password is required."),
   });
 
-  const [login, setLogin] = useState({
-    username: "",
-    password: "",
-  });
-
-  const [errors, setErrors] = useState({
-    username: "",
-    password: "",
-  });
+  useEffect(() => {
+    formSchema.isValid(login).then((valid) => {
+      setButtonDisabled(!valid);
+    });
+  }, [login]);
+  
   const [buttonDisabled, setButtonDisabled] = useState(true);
 
   const handleSubmit = (event) => {
     event.preventDefault();
   };
 
+
+  // method handlers
   const handleChange = (e) => {
     e.persist();
     Yup.reach(formSchema, e.target.name)
@@ -75,11 +85,7 @@ const Login = () => {
     });
   };
 
-  useEffect(() => {
-    formSchema.isValid(login).then((valid) => {
-      setButtonDisabled(!valid);
-    });
-  }, [login]);
+
 
   return (
     <div>
