@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { trucks } from "../../api/dummytruck";
 import styled from "styled-components";
 
@@ -43,121 +43,21 @@ const Truck = styled.div`
 
 // Code
 function FaveTrucks() {
-  const [editing, setEditing] = useState(false);
-  const [truckToEdit, setTruckToEdit] = useState({
-    name: "",
-    imageOfTruck: "",
-    cuisineType: "",
-    address: "",
-    lat: "",
-    long: ""
-  });
-
-  const editTruck = (truck) => {
-    setEditing(true);
-    setTruckToEdit({
-      ...truckToEdit,
-      name: truck.name,
-      imageOfTruck: truck.imageOfTruck,
-      cuisineType: truck.cuisineType,
-      address: truck.address,
-      lat: truck.lat,
-      long: truck.long
-    });
-  };
-
-  const editingTruck = (e) => {
-    setTruckToEdit({
-        ...truckToEdit,
-        [e.target.name]: e.target.value
-    })
-  }
-
-  const deleteTruck = (truckid) => {
-    console.log(truckid);
-  };
-
-  const submitEdit = (e) => {
-    e.preventDefault();
-  };
+  
   return (
     <Trucks>
       {trucks.map((truck, index) => {
         return (
           <Truck key={index}>
             <h2>{truck.name}</h2>
-            <img src={truck.imageOfTruck} />
+            <img src={truck.imageOfTruck} alt="visual of food truck" />
             <p>Cuisine Type: {truck.cuisineType}</p>
             <p>{truck.address}</p>
             <p>Latitude: {truck.lat}</p>
             <p>Longitude: {truck.long}</p>
-            <div className="buttons">
-              <button onClick={() => editTruck(truck)}>Edit</button>
-              <button onClick={() => deleteTruck(truck.id)}>Delete</button>
-            </div>
           </Truck>
         );
       })}
-      {editing && (
-        <form onSubmit={submitEdit}>
-          <h2>Edit Truck</h2>
-          <label>
-            Truck Name:
-            <input 
-            name="name"
-            type="text"
-            value={truckToEdit.name}
-            onChange={editingTruck}
-            />
-          </label>
-          <label>
-            Image:
-            <input 
-            name="imageOfTruck"
-            type="url"
-            value={truckToEdit.imageOfTruck}
-            onChange={editingTruck}
-            />
-          </label>
-          <label>
-            Cuisine Type:
-            <input 
-            name="cuisineType"
-            type="text"
-            value={truckToEdit.cuisineType}
-            onChange={editingTruck}
-            />
-          </label>
-          <label>
-            Address:
-            <input 
-            name="address"
-            type="address"
-            value={truckToEdit.address}
-            onChange={editingTruck}
-            />
-          </label>
-          <label>
-            Lat:
-            <input
-            name="lat"
-            type="number"
-            value={truckToEdit.lat}
-            onChange={editingTruck}
-            />
-          </label>
-          <label>
-            Long:
-            <input 
-            name="long"
-            type="number"
-            value={truckToEdit.long}
-            onChange={editingTruck}
-            />
-          </label>
-          <button>Submit</button>
-        </form>
-      )}
     </Trucks>
   );
 }

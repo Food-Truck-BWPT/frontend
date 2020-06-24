@@ -5,6 +5,8 @@ import Profile from "./profile/Profile"
 import LandingPage from "./LandingPage"
 import {Route} from "react-router-dom"
 import PrivateRoute from "../utils/PrivateRoute"
+
+
 function Content() {
     return (
         <div className="content">
