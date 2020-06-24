@@ -15,19 +15,15 @@ function Profile() {
                     <VendorNav />
                     <Route exact path="/profile/newtruck" component={NewFoodTruck} />
                     <Route exact path="/profile/mytrucks" component={VendorTrucks} />
-
                     </div>
 
                 ) :
                 (
-                    <div>user</div>
+                    <Route exact path="/profile/favoritetrucks" component={FavoriteTrucks} />
                 )}
-
         </section>
 
     )
 }
-
-/* true false vendor show according content */
 
 export default Profile
