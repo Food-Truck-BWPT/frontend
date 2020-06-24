@@ -96,7 +96,7 @@ const Login = () => {
       .post("auth/login", login)
       .then((res) => {
         console.log(res);
-        // localStorage.setItem("token", res.config.headers.Authorization);
+        localStorage.setItem("token", res.data.token);
         push("/profile")
       })
       .catch((err) => {

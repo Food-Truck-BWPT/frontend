@@ -1,7 +1,7 @@
-import React, { useState } from "react";
+import React from "react";
 import VendorNav from "./VendorNav";
 import NewFoodTruck from "./foodTruckForm";
-import { connect } from "react-redux";
+// import { connect } from "react-redux";
 import { Route } from "react-router-dom";
 import VendorTrucks from "./VendorTrucks";
 import FaveTrucks from "./favoriteTrucks";
