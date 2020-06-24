@@ -1,5 +1,6 @@
-import React from "react";
-import styled from "styled-components";
+import React, {useState} from "react"
+import useInput from "../hooks/useInput"
+import styled from "styled-components"
 
 const NewTruckForm = styled.form`
   height: 70vh;
@@ -17,57 +18,82 @@ const NewTruckForm = styled.form`
 `;
 
 function NewFoodTruck() {
+
+  const [truck, setTruck] = useState({
+    name: "",
+    imageOfTruck: "",
+    cuisineType: "",
+    address: "",
+    lat: "",
+    long: "",
+
+  });
+
+  const handleChanges = event => {
+    setTruck({ ...truck, [event.target.name]: event.target.value });
+  };
+
+  const submitForm = event => {
+    event.preventDefault();
+  }
+
   return (
-    <NewTruckForm>
+    <NewTruckForm onSubmit={submitForm}>
       <label>
         Truck Name:
-        <input name="truckName" type="text"></input>
+        <input
+          name="truckName"
+          type="text"
+          placeholder="Name of Truck"
+          value={truck.name}
+          onChange={handleChanges}/>
       </label>
       <label>
         Image Url:
-        <input name="truckImage"></input>
+        <input
+          name="truckImage"
+          type="url"
+          placeholder="Image url"
+          value={truck.imageOfTruck}
+          onChange={handleChanges}/>
       </label>
       <label>
         Cuisine Type:
-        <input name="foodType" type="text"></input>
+        <input
+          name="cuisineType"
+          type="text"
+          placeholder="Cuisine Type"
+          value={truck.cuisineType}
+          onChange={handleChanges}/>
       </label>
       <label>
         Address:
-        <input name="address" type="text"></input>
+        <input
+          name="address"
+          type="text"
+          placeholder="Food Truck Address"
+          value={truck.address}
+          onChange={handleChanges}/>
       </label>
       <label>
         Latitude:
-        <input name="lat" type="text"></input>
+        <input
+          name="latitude"
+          type="number"
+          placeholder="Current Latitude"
+          value={truck.lat}
+          onChange={handleChanges}/>
       </label>
       <label>
         Longitude:
-        <input name="long" type="text"></input>
+        <input
+          name="longitude"
+          type="number"
+          placeholder="Current Longitude"
+          value={truck.long}
+          onChange={handleChanges}/>
       </label>
-      <label>
-        Departing Time:
-        <input name="departTime" type="time"></input>
-      </label>
-      <label>
-        Next Address:
-        <input name="nextAddress" type="text"></input>
-      </label>
-      <label>
-        Next Latitude:
-        <input name="nextLat" type="text"></input>
-      </label>
-      <label>
-        Next Longitude:
-        <input name="nextLong" type="text"></input>
-      </label>
-      <label>
-        Arrival Time:
-        <input name="arrival" type="time"></input>
-      </label>
-      <label>
-        Next Departure:
-        <input name="nextDepart" type="time"></input>
-      </label>
-      <button>Submit</button>
+      <button>Add Food Truck</button>
     </NewTruckForm>
   );
 }
