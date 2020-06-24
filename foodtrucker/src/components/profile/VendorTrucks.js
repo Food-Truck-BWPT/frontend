@@ -1,5 +1,5 @@
 import React from "react"
-import trucks from "../../api/dummytruck"
+import { trucks } from "../../api/dummytruck"
 
 
 function VendorTrucks() {
@@ -9,7 +9,7 @@ function VendorTrucks() {
             {trucks.map(truck => {
                return( <div className="truck">{truck.name}</div>)
             })}
-            
+
         </div>
     )
 }
