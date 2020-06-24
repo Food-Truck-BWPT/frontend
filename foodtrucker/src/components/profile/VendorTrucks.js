@@ -9,6 +9,22 @@ const Trucks = styled.div`
   align-items: center;
   flex-flow: wrap;
   height: 70vh;
+  h2 {
+    font-size: 4rem;
+  }
+  form {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    flex-flow: wrap;
+    input {
+      margin: 1%;
+    }
+    button {
+      font-size: 2rem;
+      margin: 1%;
+    }
+  }
 `;
 
 const Truck = styled.div`
@@ -18,9 +34,7 @@ const Truck = styled.div`
   padding: 1rem;
   background-color: #323643;
   box-shadow: 0px 10px 20px #606470;
-  h2 {
-    font-size: 4rem;
-  }
+  
   p {
     font-size: 2rem;
     margin: 3%;
@@ -33,6 +47,7 @@ const Truck = styled.div`
       padding: 1rem;
       background-color: #606470;
       color: #f7f7f7;
+      border-radius: .5rem;
     }
   }
 `;
@@ -46,7 +61,7 @@ function VendorTrucks() {
     cuisineType: "",
     address: "",
     lat: "",
-    long: ""
+    long: "",
   });
 
   const editTruck = (truck) => {
@@ -58,16 +73,16 @@ function VendorTrucks() {
       cuisineType: truck.cuisineType,
       address: truck.address,
       lat: truck.lat,
-      long: truck.long
+      long: truck.long,
     });
   };
 
   const editingTruck = (e) => {
     setTruckToEdit({
-        ...truckToEdit,
-        [e.target.name]: e.target.value
-    })
-  }
+      ...truckToEdit,
+      [e.target.name]: e.target.value,
+    });
+  };
 
   const deleteTruck = (truckid) => {
     console.log(truckid);
@@ -95,64 +110,66 @@ function VendorTrucks() {
         );
       })}
       {editing && (
-        <form onSubmit={submitEdit}>
+        <div>
           <h2>Edit Truck</h2>
-          <label>
-            Truck Name:
-            <input 
-            name="name"
-            type="text"
-            value={truckToEdit.name}
-            onChange={editingTruck}
-            />
-          </label>
-          <label>
-            Image:
-            <input 
-            name="imageOfTruck"
-            type="url"
-            value={truckToEdit.imageOfTruck}
-            onChange={editingTruck}
-            />
-          </label>
-          <label>
-            Cuisine Type:
-            <input 
-            name="cuisineType"
-            type="text"
-            value={truckToEdit.cuisineType}
-            onChange={editingTruck}
-            />
-          </label>
-          <label>
-            Address:
-            <input 
-            name="address"
-            type="address"
-            value={truckToEdit.address}
-            onChange={editingTruck}
-            />
-          </label>
-          <label>
-            Lat:
-            <input
-            name="lat"
-            type="number"
-            value={truckToEdit.lat}
-            onChange={editingTruck}
-            />
-          </label>
-          <label>
-            Long:
-            <input 
-            name="long"
-            type="number"
-            value={truckToEdit.long}
-            onChange={editingTruck}
-            />
-          </label>
-          <button>Submit</button>
-        </form>
+          <form onSubmit={submitEdit}>
+            <label>
+              Truck Name:
+              <input
+                name="name"
+                type="text"
+                value={truckToEdit.name}
+                onChange={editingTruck}
+              />
+            </label>
+            <label>
+              Image:
+              <input
+                name="imageOfTruck"
+                type="url"
+                value={truckToEdit.imageOfTruck}
+                onChange={editingTruck}
+              />
+            </label>
+            <label>
+              Cuisine Type:
+              <input
+                name="cuisineType"
+                type="text"
+                value={truckToEdit.cuisineType}
+                onChange={editingTruck}
+              />
+            </label>
+            <label>
+              Address:
+              <input
+                name="address"
+                type="address"
+                value={truckToEdit.address}
+                onChange={editingTruck}
+              />
+            </label>
+            <label>
+              Lat:
+              <input
+                name="lat"
+                type="number"
+                value={truckToEdit.lat}
+                onChange={editingTruck}
+              />
+            </label>
+            <label>
+              Long:
+              <input
+                name="long"
+                type="number"
+                value={truckToEdit.long}
+                onChange={editingTruck}
+              />
+            </label>
+            <button>Submit</button>
+          </form>
+        </div>
       )}
     </Trucks>
   );

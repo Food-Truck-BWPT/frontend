@@ -45,6 +45,7 @@ function Header() {
       </form>
       <nav>
         <Link to="/">Home</Link>
+        <Link to="/profile">Profile</Link>
         <Link to="/login">Login</Link>
         <Link to="/register">Sign-up</Link>
       </nav>

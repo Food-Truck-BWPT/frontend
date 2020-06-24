@@ -29,7 +29,7 @@ function UserNav() {
     return (
         <Navi>
             {/* list of favorite trucks */}
-            <Link to="/profile/favoritetrucks">Favorite Trucks</Link>
+            <Link to="/profile">Favorite Trucks</Link>
 
         </Navi>
     )
