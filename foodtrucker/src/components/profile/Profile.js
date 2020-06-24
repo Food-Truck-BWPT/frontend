@@ -4,6 +4,7 @@ import NewFoodTruck from "./foodTruckForm"
 import { connect } from "react-redux"
 import {Route} from "react-router-dom"
 import VendorTrucks from "./VendorTrucks"
+import FavoriteTrucks from "./favoriteTrucks"
 
 function Profile() {
     const isVendor = false;
