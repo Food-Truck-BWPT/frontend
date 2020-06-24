@@ -1,5 +1,6 @@
 import React, { useEffect } from "react";
 import styled from "styled-components";
+import { Link } from "react-router-dom";
 
 const Hero = styled.div`
   display: flex;
@@ -14,45 +15,51 @@ const Hero = styled.div`
     height: 20vh;
   }
   .cities {
+    display: flex;
+    justify-content: space-around;
+
+    div {
+      width: 20%;
+      background-color: #323643;
       display: flex;
-      justify-content:space-around;
-      
-      div {
-          width: 20%;
-          background-color: #323643;
-          display: flex;
-          justify-content: space-around;
-          flex-flow: column;
-          align-items: center;
-          border-radius: 2rem;
-          h2 {
-              font-size: 3rem;
-          }
-          button {
-              width: 50%;
-              font-size: 2rem;
-          }
+      justify-content: space-around;
+      flex-flow: column;
+      align-items: center;
+      border-radius: 2rem;
+      box-shadow: 0px 10px 20px #606470;
+      h2 {
+        font-size: 3rem;
       }
+      button {
+        width: 50%;
+        font-size: 2rem;
+      }
+    }
   }
   .buttons {
     display: flex;
     justify-content: space-around;
     align-items: center;
-    button {
-      height: 70%;
+    a {
       width: 20%;
       font-size: 10rem;
       background-color: #323643;
       border-radius: 3rem;
+      box-shadow: 0px 10px 20px #606470;
+      padding-bottom: 1%;
+      &:hover {
+        box-shadow: none;
+        border: inset 5px;
+        color: #f7f7f7;
+      }
     }
   }
 `;
 
 function LandingPage() {
-
-  useEffect(()=> {
-    console.log("this is happening")
-  }, [])
+  useEffect(() => {
+    console.log("this is happening");
+  }, []);
 
   return (
     <Hero className="hero">
@@ -79,8 +86,8 @@ function LandingPage() {
         </div>
       </div>
       <div className="row buttons">
-        <button>Signup</button>
-        <button>Login</button>
+        <Link to="/register">Signup</Link>
+        <Link to="/login">Login</Link>
       </div>
     </Hero>
   );

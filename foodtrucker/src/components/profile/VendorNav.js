@@ -31,8 +31,7 @@ function VendorNav() {
             {/* create new truck */}
             <Link to="/profile/newtruck">Add Truck</Link>
             {/* edit and delete trucks */}
-            <Link to="/profile/mytrucks">My Trucks</Link>
-
+            <Link to="/profile">My Trucks</Link>
         </VendorNavi>
     )
 }
