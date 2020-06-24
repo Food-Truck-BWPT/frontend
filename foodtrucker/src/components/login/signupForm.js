@@ -71,7 +71,7 @@ const Signup = () => {
     formSchema.isValid(signup).then((valid) => {
       setButtonDisabled(!valid);
     });
-  }, [signup]);
+  }, [formSchema, signup]);
 
   // method handlers
   const handleCheck = (e) => {
