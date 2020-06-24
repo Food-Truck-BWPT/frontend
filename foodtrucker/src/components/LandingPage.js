@@ -49,6 +49,11 @@ const Hero = styled.div`
 `;
 
 function LandingPage() {
+
+  useEffect(()=> {
+    console.log("this is happening")
+  }, [])
+
   return (
     <Hero className="hero">
       <div className="row cities">

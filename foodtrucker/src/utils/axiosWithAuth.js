@@ -10,7 +10,6 @@ const axiosWithAuth = () => {
         headers: {
             Authorization: `${token}`,
         },
-        credentials: "include"
     })
 }
 
