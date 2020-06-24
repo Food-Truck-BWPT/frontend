@@ -97,7 +97,7 @@ function VendorTrucks() {
         return (
           <Truck key={index}>
             <h2>{truck.name}</h2>
-            <img src={truck.imageOfTruck} />
+            <img src={truck.imageOfTruck} alt="visual of truck"/>
             <p>Cuisine Type: {truck.cuisineType}</p>
             <p>{truck.address}</p>
             <p>Latitude: {truck.lat}</p>
