@@ -2,7 +2,7 @@ import React from "react"
 import {Link} from "react-router-dom"
 import styled from "styled-components"
 
-const VendorNavi = styled.nav`
+const Navi = styled.nav`
     background-color: #606470;
     padding: 1%;
     display: flex;
@@ -25,16 +25,14 @@ const VendorNavi = styled.nav`
     }
 `
 
-function VendorNav() {
+function UserNav() {
     return (
-        <VendorNavi>
-            {/* create new truck */}
-            <Link to="/profile/newtruck">Add Truck</Link>
-            {/* edit and delete trucks */}
-            <Link to="/profile/mytrucks">My Trucks</Link>
+        <Navi>
+            {/* list of favorite trucks */}
+            <Link to="/profile/favoritetrucks">Favorite Trucks</Link>
 
-        </VendorNavi>
+        </Navi>
     )
 }
 
-export default VendorNav
+export default UserNav

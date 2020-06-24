@@ -7,6 +7,8 @@ import {
     USER_LOGIN_FAIL,
 } from '../actions'
 
+import { trucks } from "../api";
+
 export let intitialState = {
     isVendor: false
 }

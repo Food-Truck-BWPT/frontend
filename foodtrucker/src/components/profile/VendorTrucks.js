@@ -40,12 +40,38 @@ const Truck = styled.div`
 // Code
 function VendorTrucks() {
   const [editing, setEditing] = useState(false);
+  const [truckToEdit, setTruckToEdit] = useState({
+    name: "",
+    imageOfTruck: "",
+    cuisineType: "",
+    address: "",
+    lat: "",
+    long: ""
+  });
 
-  const editTruck = (e) => {
-    setEditing(!editing);
+  const editTruck = (truck) => {
+    setEditing(true);
+    setTruckToEdit({
+      ...truckToEdit,
+      name: truck.name,
+      imageOfTruck: truck.imageOfTruck,
+      cuisineType: truck.cuisineType,
+      address: truck.address,
+      lat: truck.lat,
+      long: truck.long
+    });
   };
 
-  const deleteTruck = () => {};
+  const editingTruck = (e) => {
+    setTruckToEdit({
+        ...truckToEdit,
+        [e.target.name]: e.target.value
+    })
+  }
+
+  const deleteTruck = (truckid) => {
+    console.log(truckid);
+  };
 
   const submitEdit = (e) => {
     e.preventDefault();
@@ -62,8 +88,8 @@ function VendorTrucks() {
             <p>Latitude: {truck.lat}</p>
             <p>Longitude: {truck.long}</p>
             <div className="buttons">
-              <button onClick={editTruck}>Edit</button>
-              <button>Delete</button>
+              <button onClick={() => editTruck(truck)}>Edit</button>
+              <button onClick={() => deleteTruck(truck.id)}>Delete</button>
             </div>
           </Truck>
         );
@@ -73,27 +99,57 @@ function VendorTrucks() {
           <h2>Edit Truck</h2>
           <label>
             Truck Name:
-            <input />
+            <input 
+            name="name"
+            type="text"
+            value={truckToEdit.name}
+            onChange={editingTruck}
+            />
           </label>
           <label>
             Image:
-            <input />
+            <input 
+            name="imageOfTruck"
+            type="url"
+            value={truckToEdit.imageOfTruck}
+            onChange={editingTruck}
+            />
           </label>
           <label>
             Cuisine Type:
-            <input />
+            <input 
+            name="cuisineType"
+            type="text"
+            value={truckToEdit.cuisineType}
+            onChange={editingTruck}
+            />
           </label>
           <label>
             Address:
-            <input />
+            <input 
+            name="address"
+            type="address"
+            value={truckToEdit.address}
+            onChange={editingTruck}
+            />
           </label>
           <label>
             Lat:
-            <input />
+            <input
+            name="lat"
+            type="number"
+            value={truckToEdit.lat}
+            onChange={editingTruck}
+            />
           </label>
           <label>
             Long:
-            <input />
+            <input 
+            name="long"
+            type="number"
+            value={truckToEdit.long}
+            onChange={editingTruck}
+            />
           </label>
           <button>Submit</button>
         </form>
