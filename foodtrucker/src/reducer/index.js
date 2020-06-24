@@ -8,7 +8,7 @@ import {
 } from '../actions'
 
 export let intitialState = {
-
+    isVendor: false
 }
 
 export const reducer = (state = intitialState, action) => {

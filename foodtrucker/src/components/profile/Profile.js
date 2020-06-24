@@ -14,4 +14,6 @@ function Profile() {
     )
 }
 
+/* true false vendor show according content */
+
 export default Profile
