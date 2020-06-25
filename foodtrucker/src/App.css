@@ -11,7 +11,10 @@ html {
   font-size: 62.5%;
 }
 
-a, p, input, label {
+a,
+p,
+input,
+label {
   font-size: 2rem;
 }
 
@@ -24,7 +27,11 @@ a {
   width: 100%;
   height: 80vh;
 }
-
+@media (max-width: 500px) {
+  .hero {
+    height: 150vh;
+  }
+}
 button {
   outline: none;
 }
