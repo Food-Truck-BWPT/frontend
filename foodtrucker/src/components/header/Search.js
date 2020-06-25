@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-// import { trucks } from "../../api/dummytruck";
+import { connect } from "react-redux";
 
 function Search() {
   const [search, setSearch] = useState("");
@@ -18,4 +18,8 @@ function Search() {
   );
 }
 
-export default Search;
+const mapStateToProps = state => {
+  return state
+}
+
+export default connect(mapStateToProps)(Search);

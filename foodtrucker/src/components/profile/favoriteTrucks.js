@@ -1,6 +1,6 @@
 import React, { useEffect }from "react";
 import { connect } from 'react-redux'
-import { getFaveTrucks } from '../../actions'
+import { getFaveTrucks } from '../../actions/actions'
 import styled from "styled-components";
 
 // Styles

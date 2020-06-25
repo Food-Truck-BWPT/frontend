@@ -1,5 +1,4 @@
 import React, {useState} from "react"
-// import useInput from "../hooks/useInput"
 import styled from "styled-components"
 
 const NewTruckForm = styled.form`

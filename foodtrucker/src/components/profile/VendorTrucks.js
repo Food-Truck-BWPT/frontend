@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { connect } from 'react-redux'
-import { getTrucks } from '../../actions'
+import { getTrucks } from '../../actions/actions'
 import styled from "styled-components";
 
 // Styles
