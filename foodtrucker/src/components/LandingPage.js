@@ -8,19 +8,25 @@ const Hero = styled.div`
   align-items: center;
   flex-flow: column;
   * {
-    /* border: 1px solid black; */
+    border: 1px solid black;
   }
   .row {
     width: 90%;
     height: 20vh;
     @media (max-width: 920px) {
-        width: 100%;
-      }
+      width: 100%;
+    }
+    @media (max-width: 500px) {
+      height: auto;
+    }
   }
   .cities {
     display: flex;
     justify-content: space-around;
-
+    @media (max-width: 500px) {
+      flex-flow: column;
+      align-items: center;
+    }
     div {
       width: 20%;
       background-color: #323643;
@@ -33,6 +39,10 @@ const Hero = styled.div`
       @media (max-width: 920px) {
         height: 30vh;
         width: 23%;
+      }
+      @media (max-width: 500px) {
+        width: 90%;
+        margin: 3% 0;
       }
       h2 {
         font-size: 3rem;
@@ -56,6 +66,9 @@ const Hero = styled.div`
       padding-bottom: 1%;
       @media (max-width: 920px) {
         font-size: 5rem;
+      }
+      @media (max-width: 500px) {
+        width: 40%;
       }
       &:hover {
         box-shadow: none;
