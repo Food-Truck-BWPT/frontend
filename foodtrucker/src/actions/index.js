@@ -23,10 +23,10 @@ export const signupForm = (user) => dispatch => {
             console.log(res.data)
             // dispatch({type: USER_REGISTER_SUCCESS, payload: res.data})
             // localStorage.setItem('token', res.data.token)
-            // history.push('/profile')
+            history.push('/login')
         })
         .catch(err => {
-            dispatch({type: USER_REGISTER_FAIL, payload: 'All fields must be filled out'})
+            // dispatch({type: USER_REGISTER_FAIL, payload: 'All fields must be filled out'})
         })
 }
 
