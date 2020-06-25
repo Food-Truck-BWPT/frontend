@@ -1,8 +1,8 @@
-import React, { useState, useEffect } from "react"
-import styled from "styled-components"
-import {connect} from "react-redux"
-import Truck from "./Truck"
-import {getTrucks} from "../actions/actions"
+import React, { useState, useEffect } from "react";
+import styled from "styled-components";
+import { connect } from "react-redux";
+import Truck from "./Truck";
+import { getTrucks } from "../actions/actions";
 
 const TrucksContainer = styled.div`
   display: flex;
@@ -31,24 +31,23 @@ const TrucksContainer = styled.div`
 function Trucks(props) {
   const [trucks, setTrucks] = useState([]);
   useEffect(() => {
-    props.getTrucks()
-  }, [])
+    props.getTrucks();
+  }, [props.allTrucks]);
   return (
     <TrucksContainer>
-      {props.allTrucks.map((truck, index) => {
-        return (
-          <Truck truck={truck} index={index} />
-        )
+      {props.filteredTrucks.map((truck, index) => {
+        return <Truck truck={truck} index={index} />;
       })}
     </TrucksContainer>
   );
 }
 
-const mapStateToProps = state => {
+const mapStateToProps = (state) => {
   return {
     ...state,
-      allTrucks: state.allTrucks
-  }
-}
+    allTrucks: state.allTrucks,
+    filteredTrucks: state.filteredTrucks,
+  };
+};
 
-export default connect(mapStateToProps, {getTrucks})(Trucks)
+export default connect(mapStateToProps, { getTrucks })(Trucks);
