@@ -1,6 +1,7 @@
 import React, {useState} from "react"
 // import useInput from "../hooks/useInput"
 import styled from "styled-components"
+import axiosWithAuth from "../../utils/axiosWithAuth";
 
 const NewTruckForm = styled.form`
   height: 70vh;
@@ -35,14 +36,22 @@ function NewFoodTruck() {
 
   const submitForm = event => {
     event.preventDefault();
+    axiosWithAuth()
+      .post('/trucks', truck)
+      .then(res => {
+      console.log(res.data)
+      })
+      .catch(err => {
+      console.log(err)
+    })
   }
 
   return (
-    <NewTruckForm onSubmit={submitForm}>
+    <NewTruckForm onSubmit={submitForm} >
       <label>
         Truck Name:
         <input
-          name="truckName"
+          name="name"
           type="text"
           placeholder="Name of Truck"
           value={truck.name}
@@ -52,7 +61,7 @@ function NewFoodTruck() {
         Image Url:
         <input
           name="truckImage"
-          type="url"
+          type="text"
           placeholder="Image url"
           value={truck.imageOfTruck}
           onChange={handleChanges}/>

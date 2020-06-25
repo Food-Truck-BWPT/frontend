@@ -39,6 +39,18 @@ export const checkVendor = (isVendor) => dispatch => {
 
 
 }
+export const addTruck = (truck) => dispatch => {
+
+
+    axiosWithAuth()
+        .post('/trucks', truck)
+        .then(res => {
+        console.log('food truck', res.data)
+        })
+        .catch(err => {
+        console.log('Error:', err)
+    })
+}
 export const getTrucks = () => dispatch => {
 
     axiosWithAuth()

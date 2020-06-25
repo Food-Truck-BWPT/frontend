@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { connect } from 'react-redux'
 import { getTrucks } from '../../actions'
 import styled from "styled-components";
+import axiosWithAuth from "../../utils/axiosWithAuth"
 
 // Styles
 const Trucks = styled.div`
@@ -86,11 +87,21 @@ function VendorTrucks(props) {
   };
 
   const deleteTruck = (truckid) => {
-    console.log(truckid);
+    axiosWithAuth()
+        .delete('/trucks', {
+            id: truckid
+        })
+        .then(res => {
+            console.log(res)
+        })
+        .catch(err => {
+            console.log(err.message)
+        })
   };
 
   const submitEdit = (e) => {
     e.preventDefault();
+    truckToEdit.editing ? console.log('editing') : console.log('not')
   };
   useEffect(() => {
     props.getTrucks()
