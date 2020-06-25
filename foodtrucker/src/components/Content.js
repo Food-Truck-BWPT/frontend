@@ -5,7 +5,7 @@ import Profile from "./profile/Profile"
 import LandingPage from "./LandingPage"
 import {Route} from "react-router-dom"
 import PrivateRoute from "../utils/PrivateRoute"
-
+import Trucks from "./Trucks"
 
 function Content() {
     return (
@@ -19,6 +19,9 @@ function Content() {
             <PrivateRoute path="/profile" component={Profile} />
             <Route exact path="/">
                 <LandingPage />
+            </Route>
+            <Route exact path="/trucks">
+                <Trucks />
             </Route>
         </div>
     )

@@ -1,5 +1,6 @@
-import React, { useState } from "react";
-import { trucks } from "../../api/dummytruck";
+import React, { useState, useEffect } from "react";
+import { connect } from 'react-redux'
+import { getTrucks } from '../../actions/actions'
 import styled from "styled-components";
 
 // Styles
@@ -9,6 +10,10 @@ const Trucks = styled.div`
   align-items: center;
   flex-flow: wrap;
   height: 70vh;
+  @media (max-width: 500px) {
+    flex-flow: column;
+    height: auto;
+  }
   h2 {
     font-size: 4rem;
   }
@@ -34,7 +39,14 @@ const Truck = styled.div`
   padding: 1rem;
   background-color: #323643;
   box-shadow: 0px 10px 20px #606470;
-  
+  @media (max-width: 920px) {
+    margin: 3% 0;
+    width: 90%;
+  }
+  @media (max-width: 500px) {
+    margin: 3% 0;
+    width: 90%;
+  }
   p {
     font-size: 2rem;
     margin: 3%;
@@ -53,7 +65,7 @@ const Truck = styled.div`
 `;
 
 // Code
-function VendorTrucks() {
+function VendorTrucks(props) {
   const [editing, setEditing] = useState(false);
   const [truckToEdit, setTruckToEdit] = useState({
     name: "",
@@ -91,9 +103,12 @@ function VendorTrucks() {
   const submitEdit = (e) => {
     e.preventDefault();
   };
+  useEffect(() => {
+    props.getTrucks()
+  }, [])
   return (
     <Trucks>
-      {trucks.map((truck, index) => {
+      {props.myTrucks.map((truck, index) => {
         return (
           <Truck key={index}>
             <h2>{truck.name}</h2>
@@ -174,5 +189,13 @@ function VendorTrucks() {
     </Trucks>
   );
 }
-
-export default VendorTrucks;
+const mapStateToProps = state => {
+  return {
+    ...state,
+    myTrucks: state.myTrucks
+  }
+}
+export default connect(
+  mapStateToProps,
+  {getTrucks}
+)(VendorTrucks);
