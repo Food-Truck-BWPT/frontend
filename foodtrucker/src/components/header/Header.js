@@ -10,15 +10,25 @@ const StyledHeader = styled.header`
   align-items: center;
   height: 20vh;
   background-color: #323643;
-
-  h1{
+  @media (max-width: 500px) {
+    flex-flow: column;
+    height: 30vh;
+  }
+  h1 {
     font-size: 4rem;
+    @media (max-width: 920px) {
+      font-size: 3rem;
+    }
   }
 
   form {
     font-size: 2rem;
+
     input {
-    font-size: 2rem;
+      font-size: 2rem;
+      @media (max-width: 920px) {
+        font-size: 1.5rem;
+      }
     }
   }
 
@@ -26,6 +36,12 @@ const StyledHeader = styled.header`
     display: flex;
     justify-content: space-around;
     width: 30%;
+    @media (max-width: 920px) {
+      width: 40%;
+    }
+    @media (max-width: 500px) {
+      width: 100%;
+    }
     a {
       font-size: 2rem;
       text-decoration: none;

@@ -13,6 +13,9 @@ const Hero = styled.div`
   .row {
     width: 90%;
     height: 20vh;
+    @media (max-width: 920px) {
+        width: 100%;
+      }
   }
   .cities {
     display: flex;
@@ -27,6 +30,10 @@ const Hero = styled.div`
       align-items: center;
       border-radius: 2rem;
       box-shadow: 0px 10px 20px #606470;
+      @media (max-width: 920px) {
+        height: 30vh;
+        width: 23%;
+      }
       h2 {
         font-size: 3rem;
       }
@@ -47,6 +54,9 @@ const Hero = styled.div`
       border-radius: 3rem;
       box-shadow: 0px 10px 20px #606470;
       padding-bottom: 1%;
+      @media (max-width: 920px) {
+        font-size: 5rem;
+      }
       &:hover {
         box-shadow: none;
         border: inset 5px;
