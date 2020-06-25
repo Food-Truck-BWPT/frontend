@@ -2,8 +2,8 @@ import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 import * as Yup from "yup";
 import { useHistory } from "react-router-dom"
-import {connect} from 'react-redux'
-import {signupForm} from '../../actions'
+import { connect } from 'react-redux'
+import axiosWithAuth from '../../utils/axiosWithAuth';
 
 // STYLING ************
 const SignupSection = styled.section`
@@ -39,6 +39,7 @@ const SignupForm = styled.form`
 
 // CODE *********
 const Signup = (props) => {
+  const { push } = useHistory();
   const [signup, setSignup] = useState({
     username: "",
     email: "",
@@ -105,7 +106,15 @@ const Signup = (props) => {
 
   const submitSignup = (event) => {
     event.preventDefault();
-    props.signupForm(signup);
+    axiosWithAuth()
+      .post('/auth/register', signup)
+      .then(res => {
+        console.log(res.data)
+        push('/login')
+      })
+      .catch(err => {
+      console.log(err);
+      })
   };
 
   return (
@@ -166,13 +175,4 @@ const Signup = (props) => {
   );
 };
 
-const mapStateToProps = state => {
-  return {
-    state
-  }
-}
-
-export default connect(
-  mapStateToProps,
-  {signupForm}
-)(Signup)
+export default Signup;

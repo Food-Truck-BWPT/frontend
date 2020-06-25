@@ -1,5 +1,5 @@
 import axiosWithAuth from '../utils/axiosWithAuth';
-import history from '../utils/history';
+import {useHistory} from 'react-router-dom';
 import axios from 'axios';
 
 export const USER_REGISTER_START = 'USER_RREGISTER_START'
@@ -13,6 +13,7 @@ export const CHECK_VENDOR  = 'CHECK_VENDOR'
 
 export const signupForm = (user) => dispatch => {
 
+    const { push } = useHistory();
 
     dispatch({ type: USER_REGISTER_START })
     console.log(user)
@@ -23,7 +24,7 @@ export const signupForm = (user) => dispatch => {
             console.log(res.data)
             // dispatch({type: USER_REGISTER_SUCCESS, payload: res.data})
             // localStorage.setItem('token', res.data.token)
-            history.push('/login')
+            push('/login')
         })
         .catch(err => {
             // dispatch({type: USER_REGISTER_FAIL, payload: 'All fields must be filled out'})
