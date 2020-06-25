@@ -44,9 +44,7 @@ const Truck = styled.div`
 
 // Code
 function FaveTrucks(props) {
-useEffect(() => {
-  props.getFaveTrucks()
-}, [])
+
   return (
     <Trucks>
       {props.faveTrucks.map((truck, index) => {
