@@ -1,18 +1,13 @@
 import {
-    USER_REGISTER_START,
-    USER_REGISTER_SUCCESS,
-    USER_REGISTER_FAIL,
-    USER_LOGIN_START,
-    USER_LOGIN_SUCCESS,
-    USER_LOGIN_FAIL,
     CHECK_VENDOR,
     GET_TRUCKS,
     FAVE_TRUCKS,
-} from '../actions'
-
+} from '../actions/actions'
 
 export let intitialState = {
     isVendor: false,
+    allTrucks: [],
+    filteredTrucks: [],
     myTrucks: [],
     faveTrucks: [],
 }
@@ -28,7 +23,7 @@ export const reducer = (state = intitialState, action) => {
         case GET_TRUCKS:
             return {
                 ...state,
-                myTrucks: action.payload
+                allTrucks: action.payload
             }
         case FAVE_TRUCKS:
             return {

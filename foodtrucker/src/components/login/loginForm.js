@@ -4,7 +4,7 @@ import * as Yup from "yup";
 import axiosWithAuth from "../../utils/axiosWithAuth";
 import {useHistory} from "react-router-dom"
 import {connect} from 'react-redux'
-import {checkVendor} from '../../actions'
+import {checkVendor} from '../../actions/actions'
 // STYLING ************
 const LoginSection = styled.section`
   width: 100%;
