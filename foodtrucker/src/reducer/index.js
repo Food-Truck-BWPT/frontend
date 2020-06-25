@@ -6,11 +6,15 @@ import {
     USER_LOGIN_SUCCESS,
     USER_LOGIN_FAIL,
     CHECK_VENDOR,
+    GET_TRUCKS,
+    FAVE_TRUCKS,
 } from '../actions'
 
 
 export let intitialState = {
     isVendor: false,
+    myTrucks: [],
+    faveTrucks: [],
 }
 
 export const reducer = (state = intitialState, action) => {
@@ -20,6 +24,16 @@ export const reducer = (state = intitialState, action) => {
             return {
                 ...state,
                 isVendor: action.payload
+            }
+        case GET_TRUCKS:
+            return {
+                ...state,
+                myTrucks: action.payload
+            }
+        case FAVE_TRUCKS:
+            return {
+                ...state,
+                faveTrucks: action.payload
             }
         default:
             return state

@@ -1,5 +1,6 @@
-import React from "react";
-import { trucks } from "../../api/dummytruck";
+import React, { useEffect }from "react";
+import { connect } from 'react-redux'
+import { getFaveTrucks } from '../../actions'
 import styled from "styled-components";
 
 // Styles
@@ -42,11 +43,13 @@ const Truck = styled.div`
 `;
 
 // Code
-function FaveTrucks() {
-  
+function FaveTrucks(props) {
+useEffect(() => {
+  props.getFaveTrucks()
+}, [])
   return (
     <Trucks>
-      {trucks.map((truck, index) => {
+      {props.faveTrucks.map((truck, index) => {
         return (
           <Truck key={index}>
             <h2>{truck.name}</h2>
@@ -62,4 +65,13 @@ function FaveTrucks() {
   );
 }
 
-export default FaveTrucks;
+const mapStateToProps = state => {
+  return {
+    ...state,
+    faveTrucks: state.faveTrucks
+  }
+}
+export default connect(
+  mapStateToProps,
+  {getFaveTrucks}
+)(FaveTrucks);
