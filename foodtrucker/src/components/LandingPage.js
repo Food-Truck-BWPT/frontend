@@ -8,7 +8,7 @@ const Hero = styled.div`
   align-items: center;
   flex-flow: column;
   * {
-    border: 1px solid black;
+    /* border: 1px solid black; */
   }
   .row {
     width: 90%;
