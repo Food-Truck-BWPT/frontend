@@ -10,6 +10,10 @@ const Trucks = styled.div`
   align-items: center;
   flex-flow: wrap;
   height: 70vh;
+  @media (max-width: 500px) {
+    flex-flow: column;
+    height: auto;
+  }
 `;
 
 const Truck = styled.div`
@@ -19,6 +23,14 @@ const Truck = styled.div`
   padding: 1rem;
   background-color: #323643;
   box-shadow: 0px 10px 20px #606470;
+  @media (max-width: 920px) {
+    margin: 3% 0;
+    width: 90%;
+  }
+  @media (max-width: 500px) {
+    margin: 3% 0;
+    width: 90%;
+  }
   h2 {
     font-size: 4rem;
   }
