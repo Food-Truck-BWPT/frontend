@@ -1,6 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
+import Search from "./Search";
 
 const StyledHeader = styled.header`
   width: 100%;
@@ -39,12 +40,10 @@ function Header() {
   return (
     <StyledHeader>
       <h1>Food Trucker</h1>
-      <form>
-        <label htmlFor="search">Search: </label>
-        <input name="search"></input>
-      </form>
+      <Search />
       <nav>
         <Link to="/">Home</Link>
+        <Link to="/trucks">Trucks</Link>
         <Link to="/profile">Profile</Link>
         <Link to="/login">Login</Link>
         <Link to="/register">Sign-up</Link>
