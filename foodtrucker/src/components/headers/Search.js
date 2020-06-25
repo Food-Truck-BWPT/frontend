@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { trucks } from "../../api/dummytruck";
+// import { trucks } from "../../api/dummytruck";
 
 function Search() {
   const [search, setSearch] = useState("");
