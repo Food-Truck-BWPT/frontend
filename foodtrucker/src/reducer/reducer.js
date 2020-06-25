@@ -4,6 +4,7 @@ import {
   FAVE_TRUCKS,
   FILTER_TRUCKS,
   SAVE_TRUCK,
+  REMOVE_TRUCK
 } from "../actions/actions";
 
 export let intitialState = {
@@ -38,7 +39,11 @@ export const reducer = (state = intitialState, action) => {
         ...state,
         faveTrucks: [...state.faveTrucks, action.payload]
       };
-    
+    case REMOVE_TRUCK:
+      return {
+        ...state,
+        faveTrucks: action.payload
+      }; 
     default:
       return state;
   }

@@ -1,6 +1,6 @@
 import React, { useEffect }from "react";
 import { connect } from 'react-redux'
-import { getFaveTrucks } from '../../actions/actions'
+import { removeTruck } from '../../actions/actions'
 import styled from "styled-components";
 
 // Styles
@@ -45,6 +45,12 @@ const Truck = styled.div`
 // Code
 function FaveTrucks(props) {
 
+const removeFromFaves = (currentid) => {
+  const newFaves = props.faveTrucks.filter(truck => {
+    return truck.id !== currentid
+  })
+  props.removeTruck(newFaves)
+}
   return (
     <Trucks>
       {props.faveTrucks.map((truck, index) => {
@@ -56,6 +62,7 @@ function FaveTrucks(props) {
             <p>{truck.address}</p>
             <p>Latitude: {truck.lat}</p>
             <p>Longitude: {truck.long}</p>
+            <button onClick={() => removeFromFaves(truck.id)}>Remove</button>
           </Truck>
         );
       })}
@@ -71,5 +78,5 @@ const mapStateToProps = state => {
 }
 export default connect(
   mapStateToProps,
-  {getFaveTrucks}
+  {removeTruck}
 )(FaveTrucks);
