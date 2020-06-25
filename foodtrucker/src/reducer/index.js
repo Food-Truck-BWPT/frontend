@@ -5,14 +5,23 @@ import {
     USER_LOGIN_START,
     USER_LOGIN_SUCCESS,
     USER_LOGIN_FAIL,
+    CHECK_VENDOR,
 } from '../actions'
 
-import { trucks } from "../api";
 
 export let intitialState = {
-    isVendor: false
+    isVendor: false,
 }
 
 export const reducer = (state = intitialState, action) => {
-    switch (action.type) { }
+    switch (action.type) {
+        case CHECK_VENDOR:
+            console.log(action.payload)
+            return {
+                ...state,
+                isVendor: action.payload
+            }
+        default:
+            return state
+    }
 }
