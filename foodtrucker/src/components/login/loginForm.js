@@ -3,7 +3,8 @@ import styled from "styled-components";
 import * as Yup from "yup";
 import axiosWithAuth from "../../utils/axiosWithAuth";
 import {useHistory} from "react-router-dom"
-
+import {connect} from 'react-redux'
+import {checkVendor} from '../../actions'
 // STYLING ************
 const LoginSection = styled.section`
   width: 100%;
@@ -38,7 +39,7 @@ const LoginForm = styled.form`
 `;
 
 // CODE *********
-const Login = () => {
+const Login = (props) => {
   const {push} = useHistory()
   const [login, setLogin] = useState({
     username: "",
@@ -96,6 +97,7 @@ const Login = () => {
       .post("auth/login", login)
       .then((res) => {
         console.log(res);
+        props.checkVendor(res.data.isVendor);
         localStorage.setItem("token", res.data.token);
         push("/profile")
       })
@@ -118,7 +120,7 @@ const Login = () => {
             onChange={handleChange}
           />
         </label>
-        
+
         <label>
           Password:
           <input
@@ -129,7 +131,7 @@ const Login = () => {
             onChange={handleChange}
           />
         </label>
-        
+
         <button disabled={buttonDisabled}>Submit</button>
       </LoginForm>
       <div>
@@ -143,5 +145,13 @@ const Login = () => {
     </LoginSection>
   );
 };
+const mapStateToProps = state => {
+  return {
+    state
+  }
+}
 
-export default Login;
+export default connect(
+  mapStateToProps,
+  {checkVendor}
+)(Login)

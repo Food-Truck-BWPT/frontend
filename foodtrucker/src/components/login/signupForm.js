@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 import * as Yup from "yup";
-import axiosWithAuth from "../../utils/axiosWithAuth";
-import {useHistory} from "react-router-dom"
+import { useHistory } from "react-router-dom"
+import {connect} from 'react-redux'
+import {signupForm} from '../../actions'
 
 // STYLING ************
 const SignupSection = styled.section`
@@ -37,8 +38,7 @@ const SignupForm = styled.form`
 `;
 
 // CODE *********
-const Signup = () => {
-  const {push} =useHistory()
+const Signup = (props) => {
   const [signup, setSignup] = useState({
     username: "",
     email: "",
@@ -103,23 +103,15 @@ const Signup = () => {
     });
   };
 
-  const handleSubmit = (event) => {
+  const submitSignup = (event) => {
     event.preventDefault();
-    axiosWithAuth()
-      .post("/auth/register", signup)
-      .then((res) => {
-        console.log(res.data);
-        push("/login")
-      })
-      .catch((err) => {
-        console.log(err);
-      });
+    props.signupForm(signup);
   };
 
   return (
     <SignupSection>
       <h2>User Signup</h2>
-      <SignupForm onSubmit={handleSubmit}>
+      <SignupForm onSubmit={submitSignup}>
         <label>
           UserName:
           <input
@@ -174,4 +166,13 @@ const Signup = () => {
   );
 };
 
-export default Signup;
+const mapStateToProps = state => {
+  return {
+    state
+  }
+}
+
+export default connect(
+  mapStateToProps,
+  {signupForm}
+)(Signup)
