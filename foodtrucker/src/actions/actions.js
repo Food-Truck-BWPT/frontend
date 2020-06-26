@@ -41,15 +41,3 @@ export const saveTruck = (savedTruck) => dispatch => {
 export const removeTruck = (newFaves) => dispatch => {
     dispatch({type: REMOVE_TRUCK, payload: newFaves})
 }
-
-export const editTruck = (truck) => dispatch => {
-
-    axiosWithAuth()
-        .put(`/trucks/${truck.id}`)
-        .then(res => {
-        console.log(res)
-        dispatch({ type: FAVE_TRUCKS, payload: res.data })
-    })
-        .catch(err => { console.log(err) })
-
-}
