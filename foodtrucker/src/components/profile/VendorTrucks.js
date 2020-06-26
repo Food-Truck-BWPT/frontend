@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { connect } from 'react-redux'
 import { getTrucks } from '../../actions/actions'
 import styled from "styled-components";
+import axiosWithAuth from "../../utils/axiosWithAuth"
 
 // Styles
 const Trucks = styled.div`
@@ -97,15 +98,28 @@ function VendorTrucks(props) {
   };
 
   const deleteTruck = (truckid) => {
-    console.log(truckid);
+    axiosWithAuth()
+        .delete(`/trucks/${truckid}`)
+        .then(res => {
+            console.log(res)
+        })
+        .catch(err => {
+            console.log(err.message)
+        })
   };
 
   const submitEdit = (e) => {
-    e.preventDefault();
+    // e.preventDefault();
+    // axiosWithAuth()
+    //   .put(`/trucks/${truck.id}`, truck)
+    //   .then(res => {
+    //   console.log(res.data)
+    // })
+
   };
   useEffect(() => {
     props.getTrucks()
-  }, [])
+  }, [props.myTrucks])
   return (
     <Trucks>
       {props.myTrucks.map((truck, index) => {
