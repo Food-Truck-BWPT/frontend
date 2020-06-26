@@ -1,5 +1,7 @@
 import React, {useState} from "react"
 import styled from "styled-components"
+import axiosWithAuth from "../../utils/axiosWithAuth";
+import { useHistory } from "react-router-dom";
 
 const NewTruckForm = styled.form`
   height: 70vh;
@@ -17,7 +19,7 @@ const NewTruckForm = styled.form`
 `;
 
 function NewFoodTruck() {
-
+  const { push } = useHistory();
   const [truck, setTruck] = useState({
     name: "",
     imageOfTruck: "",
@@ -34,14 +36,23 @@ function NewFoodTruck() {
 
   const submitForm = event => {
     event.preventDefault();
+    axiosWithAuth()
+      .post('/trucks', truck)
+      .then(res => {
+        console.log(res.data)
+        push('/profile')
+      })
+      .catch(err => {
+      console.log(err)
+    })
   }
 
   return (
-    <NewTruckForm onSubmit={submitForm}>
+    <NewTruckForm onSubmit={submitForm} >
       <label>
         Truck Name:
         <input
-          name="truckName"
+          name="name"
           type="text"
           placeholder="Name of Truck"
           value={truck.name}
@@ -51,7 +62,7 @@ function NewFoodTruck() {
         Image Url:
         <input
           name="truckImage"
-          type="url"
+          type="text"
           placeholder="Image url"
           value={truck.imageOfTruck}
           onChange={handleChanges}/>
