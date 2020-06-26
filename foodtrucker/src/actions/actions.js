@@ -40,4 +40,8 @@ export const saveTruck = (savedTruck) => dispatch => {
 
 export const removeTruck = (newFaves) => dispatch => {
     dispatch({type: REMOVE_TRUCK, payload: newFaves})
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> b3871db8c3520d8dff582a4f20c1973f320e0c47
