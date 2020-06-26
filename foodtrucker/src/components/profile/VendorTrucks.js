@@ -3,7 +3,6 @@ import { connect } from 'react-redux'
 import { getTrucks } from '../../actions/actions'
 import styled from "styled-components";
 import axiosWithAuth from "../../utils/axiosWithAuth"
-import Axios from "axios";
 
 // Styles
 const Trucks = styled.div`
