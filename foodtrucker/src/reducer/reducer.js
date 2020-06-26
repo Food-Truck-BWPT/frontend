@@ -28,10 +28,7 @@ export const reducer = (state = intitialState, action) => {
         ...state,
         allTrucks: action.payload,
         filteredTrucks: state.allTrucks,
-<<<<<<< HEAD
         myTrucks: state.allTrucks,
-=======
->>>>>>> b3871db8c3520d8dff582a4f20c1973f320e0c47
       };
     case FILTER_TRUCKS:
       return {
@@ -47,11 +44,7 @@ export const reducer = (state = intitialState, action) => {
       return {
         ...state,
         faveTrucks: action.payload
-<<<<<<< HEAD
       };
-=======
-      }; 
->>>>>>> b3871db8c3520d8dff582a4f20c1973f320e0c47
     default:
       return state;
   }
