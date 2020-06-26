@@ -64,7 +64,7 @@ function Trucks(props) {
   const [trucks, setTrucks] = useState([]);
   useEffect(() => {
     props.getTrucks();
-  }, []);
+  }, [props.allTrucks]);
 
   const saveToFaves = (currentid) => {
     const savedTruck = props.allTrucks.filter((truck) => {
