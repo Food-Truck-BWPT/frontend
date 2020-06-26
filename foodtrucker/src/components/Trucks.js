@@ -9,7 +9,7 @@ const TrucksContainer = styled.div`
   align-items: center;
   flex-flow: row wrap;
   height: 70vh;
-  
+  width: 100%;
   @media (max-width: 500px) {
     flex-flow: column;
     height: auto;
@@ -34,7 +34,7 @@ const TrucksContainer = styled.div`
 
 const StyledTruck = styled.div`
   border: 1px solid #323643;
-  width: 20%;
+  width: 30%;
   border-radius: 1rem;
   padding: 1rem;
   background-color: #323643;
@@ -64,7 +64,7 @@ function Trucks(props) {
   const [trucks, setTrucks] = useState([]);
   useEffect(() => {
     props.getTrucks();
-  }, []);
+  }, [props.allTrucks]);
 
   const saveToFaves = (currentid) => {
     const savedTruck = props.allTrucks.filter((truck) => {
