@@ -28,6 +28,7 @@ export const reducer = (state = intitialState, action) => {
         ...state,
         allTrucks: action.payload,
         filteredTrucks: state.allTrucks,
+        myTrucks: state.allTrucks,
       };
     case FILTER_TRUCKS:
       return {
@@ -43,7 +44,7 @@ export const reducer = (state = intitialState, action) => {
       return {
         ...state,
         faveTrucks: action.payload
-      }; 
+      };
     default:
       return state;
   }

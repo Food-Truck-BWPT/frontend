@@ -1,6 +1,7 @@
 import React, {useState} from "react"
 import styled from "styled-components"
 import axiosWithAuth from "../../utils/axiosWithAuth";
+import { useHistory } from "react-router-dom";
 
 const NewTruckForm = styled.form`
   height: 70vh;
@@ -18,7 +19,7 @@ const NewTruckForm = styled.form`
 `;
 
 function NewFoodTruck() {
-
+  const { push } = useHistory();
   const [truck, setTruck] = useState({
     name: "",
     imageOfTruck: "",
@@ -38,7 +39,8 @@ function NewFoodTruck() {
     axiosWithAuth()
       .post('/trucks', truck)
       .then(res => {
-      console.log(res.data)
+        console.log(res.data)
+        push('/profile')
       })
       .catch(err => {
       console.log(err)
