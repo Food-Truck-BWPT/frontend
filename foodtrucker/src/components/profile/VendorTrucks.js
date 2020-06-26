@@ -69,6 +69,7 @@ const Truck = styled.div`
 function VendorTrucks(props) {
   const [editing, setEditing] = useState(false);
   const [truckToEdit, setTruckToEdit] = useState({
+    id:"",
     name: "",
     imageOfTruck: "",
     cuisineType: "",
@@ -81,6 +82,7 @@ function VendorTrucks(props) {
     setEditing(true);
     setTruckToEdit({
       ...truckToEdit,
+      id: truck.id,
       name: truck.name,
       imageOfTruck: truck.imageOfTruck,
       cuisineType: truck.cuisineType,
@@ -109,12 +111,13 @@ function VendorTrucks(props) {
   };
 
   const submitEdit = (e) => {
-    // e.preventDefault();
-    // axiosWithAuth()
-    //   .put(`/trucks/${truck.id}`, truck)
-    //   .then(res => {
-    //   console.log(res.data)
-    // })
+    e.preventDefault();
+    axiosWithAuth()
+      .put(`/trucks/${truckToEdit.id}`, truckToEdit)
+      .then(res => {
+        console.log(res.data)
+        setEditing(false)
+    })
 
   };
   useEffect(() => {
